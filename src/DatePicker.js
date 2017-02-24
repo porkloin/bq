@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
-import InfiniteCalendar from 'react-infinite-calendar';
-import 'react-infinite-calendar/styles.css'; // only needs to be imported once
+import {DateField} from 'react-date-picker';
+import 'react-date-picker/index.css';
 
 class DatePicker extends Component {
-  handleDateSelect() {
+  constructor() {
+    super();
+    this.handleDateSelect = this.handleDateSelect.bind(this);
+  }
+  handleDateSelect(date) {
     console.log('handling selection!');
+    console.log(date);
   }
   render() {
     return (
-      <InfiniteCalendar
-        width={400}
-        height={600}
-        disabledDays={[0,6]}
-        min={this.props.myMinDate}
-        keyboardSupport={true}
+      <DateField
+        dateFormat="YYYY-MM-DD"
+        updateOnDateClick={true}
+        collapseOnDateClick={true}
+        onChange={(dateString) => { this.handleDateSelect(dateString) }}
       />
     );
   }

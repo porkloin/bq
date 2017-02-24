@@ -9,6 +9,7 @@ class App extends Component {
     this.state = {
       minDate: "1930-01-01",
       quakes: {},
+      selectedDate: null,
       currentDate: null,
       calendarVisible: false
     }
@@ -21,7 +22,7 @@ class App extends Component {
       <div className="App">
         <h1>Derp!</h1>
         <center>
-          <DatePicker myToday={this.state.today} myMinDate={this.state.minDate} setQuakeState={this.state.setQuakeState}/>
+          <DatePicker myToday={this.state.today} myMinDate={this.state.minDate} setQuakeState={this.state.setQuakeState} selectedDate={this.state.selectedDate} />
         </center>
       </div>
     );
