@@ -3,19 +3,16 @@ import {DateField} from 'react-date-picker';
 import 'react-date-picker/index.css';
 
 class DatePicker extends Component {
-  constructor() {
-    super();
-    this.handleDateSelect = this.handleDateSelect.bind(this);
-  }
   handleDateSelect(date) {
     console.log('handling selection!');
     console.log(date);
+    var quakes;
     fetch("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.geojson")
     .then( (response) => {
       return response.json() 
     })
     .then( (json) => {
-      console.log(json);
+      this.props.quakeMethod(json);
     });
   }
 render() {

@@ -14,15 +14,16 @@ class App extends Component {
       calendarVisible: false
     }
   }
-  setQuakeState(quakes) {
-    this.setState({quakes: quakes}); 
+  setQuakeState(myQuakes) {
+    const quakes = myQuakes;
+    this.setState({quakes}); 
   }
   render() {
     return (
       <div className="App">
         <h1>Birthquakes!</h1>
         <center>
-          <DatePicker myToday={this.state.today} myMinDate={this.state.minDate} setQuakeState={this.state.setQuakeState} selectedDate={this.state.selectedDate} />
+          <DatePicker myToday={this.state.today} myMinDate={this.state.minDate} quakeMethod={this.setQuakeState} selectedDate={this.state.selectedDate} />
         </center>
       </div>
     );
