@@ -10,8 +10,15 @@ class DatePicker extends Component {
   handleDateSelect(date) {
     console.log('handling selection!');
     console.log(date);
+    fetch("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.geojson")
+    .then( (response) => {
+      return response.json() 
+    })
+    .then( (json) => {
+      console.log(json);
+    });
   }
-  render() {
+render() {
     return (
       <DateField
         dateFormat="YYYY-MM-DD"
