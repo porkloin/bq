@@ -17,21 +17,40 @@ class QuakeMap extends Component {
     super();
     this.componentDidUpdate = this.componentDidUpdate.bind(this);
     this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
+    //    this.onEachFeature = this.onEachFeature.bind(this);
   }
   componentWillReceiveProps(prevProps) {
     if (prevProps.data !== this.props.data) {
       console.log('will receive props');
       this.refs.geojsonLayer.leafletElement.clearLayers();
-      //console.log(this.refs.map.leafletElement.clearLayers);
-      //this.refs.map.leafletElement.clearLayers();
     }
   }
   componentDidUpdate(prevProps) {
     if (prevProps.data !== this.props.data) {
       console.log('component did update');
       this.refs.geojsonLayer.leafletElement.addData(this.props.data);
-      //this.refs.map.leafletElement.addData(this.props.data);
     }
+  }
+  onEachFeature(feature, layer) {
+    if (feature.properties && feature.properties.name) {
+      console.log('onEach feature triggering');
+      console.log(feature);
+      console.log(layer);
+      return layer.bindPopup(feature.properties.name);
+    }
+  }
+  pointToLayer(feature, latlng) {
+  // renders our GeoJSON points as circle markers, rather than Leaflet's default image markers
+  // parameters to style the GeoJSON markers
+    var markerParams = {
+      radius: 4,
+      fillColor: 'orange',
+      color: '#fff',
+      weight: 1,
+      opacity: 0.5,
+      fillOpacity: 0.8
+    };
+    return Leaflet.circleMarker(latlng, markerParams);
   }
   render() {
     return (
@@ -41,9 +60,11 @@ class QuakeMap extends Component {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         <GeoJSON
-          ref="geojsonLayer"
           key={this.props.data}
+          ref="geojsonLayer"
           data={this.props.data}
+          pointToLayer={this.pointToLayer}
+          onEachFeature={(feature, layer) => layer.bindPopup(feature.properties.title)}
           map={this} />
       </Map>
     );
