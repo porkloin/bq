@@ -10,7 +10,7 @@ class DatePicker extends Component {
     var tomorrow = moment(date).add(1,'day').format("YYYY-MM-DD");
     console.log(date);
     console.log(tomorrow);
-    fetch("http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=" + date + "&endtime=" + tomorrow + "&limit=15")
+    fetch("http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=" + date + "&endtime=" + tomorrow + "&limit=15&orderby=magnitude")
     .then( (response) => {
       return response.json() 
     })
