@@ -26,7 +26,7 @@ class App extends Component {
         <center>
           <DatePicker myToday={this.state.today} myMinDate={this.state.minDate} quakeMethod={this.setQuakeState} selectedDate={this.state.selectedDate} />
         </center>
-        <QuakeMap />
+        <QuakeMap quakes={this.state.quakes}/>
       </div>
     );
   }

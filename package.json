@@ -17,7 +17,7 @@
     "react-dom": "^15.4.2",
     "react-google-maps": "^4.11.0",
     "react-infinite-calendar": "^1.2.2",
-    "react-leaflet": "^1.1.0"
+    "react-leaflet": "next"
   },
   "scripts": {
     "start": "react-scripts start",

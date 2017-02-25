@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import {DateField} from 'react-date-picker';
 import 'react-date-picker/index.css';
+import './DatePicker.css';
 
 class DatePicker extends Component {
   handleDateSelect(date) {
     console.log('handling selection!');
     console.log(date);
-    var quakes;
     fetch("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.geojson")
     .then( (response) => {
       return response.json() 

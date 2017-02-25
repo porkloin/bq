@@ -4320,9 +4320,9 @@ react-input-slider@^1.5.0:
     blacklist "^1.1.2"
     classnames "^2.2.0"
 
-react-leaflet@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-leaflet/-/react-leaflet-1.1.0.tgz#0ec55ff030fae8c90e6e00a48163dcbccbadb4d8"
+react-leaflet@next:
+  version "1.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/react-leaflet/-/react-leaflet-1.0.0-rc.3.tgz#779965a695133f35c5465a55d19592441d278026"
   dependencies:
     lodash "^4.0.0"
     warning "^3.0.0"
