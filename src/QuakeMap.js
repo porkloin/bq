@@ -13,25 +13,45 @@ Leaflet.Icon.Default.mergeOptions({
 const position = [51.505, -0.09];
 
 class QuakeMap extends Component {
-
+  constructor(){
+    super();
+    this.componentDidUpdate = this.componentDidUpdate.bind(this);
+    this.componentWillReceiveProps = this.componentWillReceiveProps.bind(this);
+  }
+  componentWillReceiveProps(prevProps) {
+    if (prevProps.data !== this.props.data) {
+      console.log('will receive props');
+      this.refs.geojsonLayer.leafletElement.clearLayers();
+      //console.log(this.refs.map.leafletElement.clearLayers);
+      //this.refs.map.leafletElement.clearLayers();
+    }
+  }
+  componentDidUpdate(prevProps) {
+    if (prevProps.data !== this.props.data) {
+      console.log('component did update');
+      this.refs.geojsonLayer.leafletElement.addData(this.props.data);
+      //this.refs.map.leafletElement.addData(this.props.data);
+    }
+  }
   render() {
     return (
-      <Map onClick={this.mapTest} center={position} zoom={1} >
+      <Map ref="map" onClick={this.mapTest} center={position} zoom={1} >
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         <GeoJSON
-          data={this.props.quakes}
+          ref="geojsonLayer"
+          key={this.props.data}
+          data={this.props.data}
           map={this} />
-        <Marker position={position}>
-                <Popup>
-                          <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
-          </Popup>
-        </Marker>
       </Map>
     );
   }
 }
-
+  /*
+QuakeMap.propTypes = {
+  data: React.PropTypes.object.isRequired
+};
+*/
 export default QuakeMap;

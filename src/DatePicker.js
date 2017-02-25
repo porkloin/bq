@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import {DateField} from 'react-date-picker';
+import moment from 'moment';
 import 'react-date-picker/index.css';
 import './DatePicker.css';
 
 class DatePicker extends Component {
   handleDateSelect(date) {
     console.log('handling selection!');
+    var tomorrow = moment(date).add(1,'day').format("YYYY-MM-DD");
     console.log(date);
-    fetch("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_day.geojson")
+    console.log(tomorrow);
+    fetch("http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=" + date + "&endtime=" + tomorrow)
     .then( (response) => {
       return response.json() 
     })

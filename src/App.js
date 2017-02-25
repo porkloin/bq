@@ -9,7 +9,7 @@ class App extends Component {
     this.setQuakeState = this.setQuakeState.bind(this);
     this.state = {
       minDate: "1930-01-01",
-      quakes: {},
+      quakes: null,
       selectedDate: null,
       currentDate: null,
       calendarVisible: false
@@ -17,16 +17,15 @@ class App extends Component {
   }
   setQuakeState(myQuakes) {
     const quakes = myQuakes;
-    this.setState({quakes}); 
+    this.setState({quakes: quakes}); 
   }
   render() {
     return (
       <div className="App">
-        <h1>Birthquakes!</h1>
         <center>
           <DatePicker myToday={this.state.today} myMinDate={this.state.minDate} quakeMethod={this.setQuakeState} selectedDate={this.state.selectedDate} />
         </center>
-        <QuakeMap quakes={this.state.quakes}/>
+        <QuakeMap data={this.state.quakes}/>
       </div>
     );
   }
