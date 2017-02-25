@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DatePicker from './DatePicker';
+import QuakeMap from './QuakeMap';
 import './App.css';
 
 class App extends Component {
@@ -25,6 +26,7 @@ class App extends Component {
         <center>
           <DatePicker myToday={this.state.today} myMinDate={this.state.minDate} quakeMethod={this.setQuakeState} selectedDate={this.state.selectedDate} />
         </center>
+        <QuakeMap />
       </div>
     );
   }
