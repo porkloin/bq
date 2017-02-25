@@ -35,7 +35,7 @@ class QuakeMap extends Component {
   }
   render() {
     return (
-      <Map ref="map" onClick={this.mapTest} center={position} zoom={1} >
+      <Map ref="map" onClick={this.mapTest} center={position} zoom={3} >
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

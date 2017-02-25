@@ -22,9 +22,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <center>
-          <DatePicker myToday={this.state.today} myMinDate={this.state.minDate} quakeMethod={this.setQuakeState} selectedDate={this.state.selectedDate} />
-        </center>
+        <DatePicker myToday={this.state.today} myMinDate={this.state.minDate} quakeMethod={this.setQuakeState} selectedDate={this.state.selectedDate} />
         <QuakeMap data={this.state.quakes}/>
       </div>
     );
