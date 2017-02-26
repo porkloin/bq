@@ -29,6 +29,8 @@ class QuakeMap extends Component {
     if (prevProps.data !== this.props.data) {
       console.log('component did update');
       this.refs.geojsonLayer.leafletElement.addData(this.props.data);
+      var pointCoord = this.props.data.features[0].geometry.coordinates;
+      this.refs.map.leafletElement.panTo([pointCoord[1], pointCoord[0]]);
     }
   }
   onEachFeature(feature, layer) {
@@ -54,7 +56,7 @@ class QuakeMap extends Component {
   }
   render() {
     return (
-      <Map ref="map" onClick={this.mapTest} center={position} zoom={3} >
+      <Map ref="map" center={position} zoom={3} >
         <TileLayer
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

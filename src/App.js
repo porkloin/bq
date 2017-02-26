@@ -16,19 +16,23 @@ class App extends Component {
       },
       selectedDate: null,
       currentDate: null,
-      calendarVisible: false
+      calendarVisible: false,
+      liveQuakeId: 0
     }
   }
   setQuakeState(myQuakes) {
     const quakes = myQuakes;
     this.setState({quakes: quakes}); 
   }
+  setLiveQuake(idex) {
+    this.setState({ liveQuakeId: idex})
+  }
   render() {
     return (
       <div className="App">
         <DatePicker myToday={this.state.today} myMinDate={this.state.minDate} quakeMethod={this.setQuakeState} selectedDate={this.state.selectedDate} />
-        <QuakeMap data={this.state.quakes} />
-        <QuakeList data={this.state.quakes} />
+        <QuakeMap data={this.state.quakes} liveQuakeId={this.state.liveQuakeId} />
+        <QuakeList data={this.state.quakes} liveQuakeId={this.state.liveQuakeId} />
       </div>
     );
   }
