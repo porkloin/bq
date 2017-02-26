@@ -1,0 +1,9 @@
+.QuakeList {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10%;
+  z-index: 501;
+}
+
