@@ -10,7 +10,7 @@ class QuakeList extends Component {
             {
               Object
                 .keys(this.props.data.features)
-                .map(key => <Quake key={key} details={this.props.data.features[key]} />)
+                .map(key => <Quake key={key} index={key} details={this.props.data.features[key]} liveQuakeId={this.props.liveQuakeId} setLiveQuake={this.props.setLiveQuake } />)
             }
         </div>
       );

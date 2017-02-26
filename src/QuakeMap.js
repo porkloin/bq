@@ -32,6 +32,10 @@ class QuakeMap extends Component {
       var pointCoord = this.props.data.features[0].geometry.coordinates;
       this.refs.map.leafletElement.panTo([pointCoord[1], pointCoord[0]]);
     }
+    if (prevProps.liveQuakeId !== this.props.liveQuakeId) {
+      pointCoord = this.props.data.features[this.props.liveQuakeId].geometry.coordinates;
+      this.refs.map.leafletElement.panTo([pointCoord[1], pointCoord[0]]);
+    }
   }
   onEachFeature(feature, layer) {
     if (feature.properties && feature.properties.name) {
