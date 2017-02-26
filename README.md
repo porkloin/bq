@@ -1,6 +1,6 @@
 #Birthquakes: React Edition
 
-##This is a rebuild of the _*Earthscope*_ project's "Birthquakes" webapp, which was previously built in raw HTML/CSS/JS.
+This is a rebuild of the _*Earthscope*_ project's "Birthquakes" webapp, which was previously built in raw HTML/CSS/JS.
 
 ###Dependencies:
 
@@ -14,12 +14,16 @@ This project was built in [create-react-app](https://github.com/facebookincubato
 
 To build for the first time in a dev environment with a local server, run:
 
-```git clone git@github.com:porkloin/bq
+```
 
-```cd bq
+git clone git@github.com:porkloin/bq
 
-```yarn install
+cd bq
 
-```yarnpkg start
+yarn install
+
+yarnpkg start
+
+```
 
 
