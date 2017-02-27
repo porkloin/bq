@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Leaflet from 'leaflet';
-import { Map, GeoJSON, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Map, GeoJSON, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import './QuakeMap.css';
 

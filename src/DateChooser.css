@@ -1,0 +1,16 @@
+.react-date-field {
+  z-index: 500;
+  min-width: 280px;
+}
+.react-date-field input {
+  text-align: center;
+}
+.react-date-picker__calendar {
+  position:relative;
+}
+.react-date-field__calendar-icon {
+  display: none;
+}
+.react-date-field--theme-default .react-date-field__clear-icon {
+  display: none!important;
+}
