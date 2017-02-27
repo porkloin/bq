@@ -17,6 +17,9 @@
 .App-intro {
   font-size: large;
 }
+canvas {
+  z-index: 498!important;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

@@ -1,3 +1,4 @@
+import Confetti from 'react-confetti';
 import React, { Component } from 'react';
 import DatePicker from './DatePicker';
 import QuakeList from './QuakeList';
@@ -18,7 +19,8 @@ class App extends Component {
       selectedDate: null,
       currentDate: null,
       calendarVisible: false,
-      liveQuakeId: 0
+      liveQuakeId: 0,
+      confettiNumber: 0
     }
   }
   setQuakeState(myQuakes) {
@@ -34,6 +36,7 @@ class App extends Component {
         <DatePicker myToday={this.state.today} myMinDate={this.state.minDate} quakeMethod={this.setQuakeState} selectedDate={this.state.selectedDate} />
         <QuakeMap data={this.state.quakes} liveQuakeId={this.state.liveQuakeId} />
         <QuakeList data={this.state.quakes} setLiveQuake={this.setLiveQuake} liveQuakeId={this.state.liveQuakeId} />
+        <Confetti numberOfPieces={this.state.confettiNumber}/>
       </div>
     );
   }
