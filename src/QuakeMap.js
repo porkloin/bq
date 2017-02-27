@@ -49,7 +49,7 @@ class QuakeMap extends Component {
   // renders our GeoJSON points as circle markers, rather than Leaflet's default image markers
   // parameters to style the GeoJSON markers
     var markerParams = {
-      radius: 4,
+      radius: 7,
       fillColor: 'orange',
       color: '#fff',
       weight: 1,
@@ -62,8 +62,8 @@ class QuakeMap extends Component {
     return (
       <Map ref="map" center={position} zoom={3} >
         <TileLayer
-          url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url='http://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}'
+          attribution='Tiles &copy; Esri &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri'
         />
         <GeoJSON
           key={this.props.data}
