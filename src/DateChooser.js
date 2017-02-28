@@ -12,10 +12,13 @@ class DateChooser extends Component {
     console.log(tomorrow);
     fetch("http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=" + date + "&endtime=" + tomorrow + "&limit=3&orderby=magnitude")
     .then( (response) => {
-      return response.json() 
+      return response.json()
     })
     .then( (json) => {
       this.props.quakeMethod(json);
+      this.props.shadeToggle();
+      this.props.introToggle();
+      this.props.bannerToggle();
       this.props.setConfettiNumber(200);
       //setInterval(() => if(this.props.confettiNumber > 0) {this.props.setConfettiNumber(this.props.confettiNumber - 1)} else { clearInterval() }, 200);
       setTimeout(() => this.props.setConfettiNumber(100), 4000);
@@ -33,9 +36,11 @@ render() {
         collapseOnDateClick={true}
         onChange={(dateString) => { this.handleDateSelect(dateString) }}
       >
+        <input placeholder="Click to enter your birthdate" type="text" name="DateOfBirth" />
         <DatePicker
           weekNumbers={false}
           highlightWeekends={false}
+          position={"top"}
         />
       </DateField>
     );

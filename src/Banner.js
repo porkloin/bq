@@ -4,7 +4,7 @@ import './Banner.css';
 class Banner extends Component {
   render() {
     return(
-        <div className="ribbon">
+        <div className={"ribbon " + this.props.isVisible}>
           <strong className="ribbon-content">
             <h1>A Pure CSS Ribbon</h1>
           </strong>
