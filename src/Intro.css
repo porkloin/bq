@@ -1,6 +1,6 @@
 .intro {
   z-index: 499;
-	font-size: 2em;
+	font-size: 1vmin;
 	color: white;
 	margin-top: 0;
 	margin-bottom: 0;
@@ -14,7 +14,9 @@
 	color: #C390D4;
 	font-weight: 900;
 	line-height:1.5em;
-	font-size: 2em;
+	font-size: 12vmin;
+  //IE9
+	font-size: 12vm;
 }
 .blue {
 	color: #CCFFFF;
@@ -24,6 +26,20 @@
 	font-weight: 300;
 }
 .tiny {
-	font-size:.5em;
-	line-height: .5em;
+	font-size: 11px;
+}
+@media(min-width: 500px) {
+  .intro span.bq {
+    font-size: 10vmin;
+    //IE9
+    font-size: 10vm;
+  }
+  .tiny {
+    font-size: 12px;
+  }
+}
+@media(min-width: 768px) {
+  .intro span.bq {
+    font-size: 7vmin;
+  }
 }

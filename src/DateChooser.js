@@ -8,7 +8,7 @@ class DateChooser extends Component {
   handleDateSelect(date) {
     console.log('handling selection!');
     var tomorrow = moment(date).add(1,'day').format("YYYY-MM-DD");
-    console.log(date);
+    this.props.setSelectedDate(moment(date).format("MMMM Do, YYYY"));
     console.log(tomorrow);
     fetch("http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=" + date + "&endtime=" + tomorrow + "&limit=3&orderby=magnitude")
     .then( (response) => {
@@ -16,9 +16,7 @@ class DateChooser extends Component {
     })
     .then( (json) => {
       this.props.quakeMethod(json);
-      this.props.shadeToggle();
       this.props.introToggle();
-      this.props.bannerToggle();
       this.props.setConfettiNumber(200);
       //setInterval(() => if(this.props.confettiNumber > 0) {this.props.setConfettiNumber(this.props.confettiNumber - 1)} else { clearInterval() }, 200);
       setTimeout(() => this.props.setConfettiNumber(100), 4000);
@@ -26,6 +24,10 @@ class DateChooser extends Component {
       setTimeout(() => this.props.setConfettiNumber(30), 10000);
       setTimeout(() => this.props.setConfettiNumber(10), 12000);
       setTimeout(() => this.props.setConfettiNumber(0), 14000);
+    }).catch(function() {
+      console.log("Failed to get http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=" + date + "&endtime=" + tomorrow + "&limit=3&orderby=magnitude")
+      console.log("Network error?");
+      console.log('Sorry, a network error has occured and earthquake data is temporarily unavailable.')
     });
   }
 render() {
@@ -35,6 +37,7 @@ render() {
         updateOnDateClick={true}
         collapseOnDateClick={true}
         onChange={(dateString) => { this.handleDateSelect(dateString) }}
+        maxDate={moment()}
       >
         <input placeholder="Click to enter your birthdate" type="text" name="DateOfBirth" />
         <DatePicker

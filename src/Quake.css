@@ -1,0 +1,39 @@
+.quake {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.quake p {
+  font-size: 2.5vmin;
+  //IE9
+  font-size: 2.5vm;
+  color: white;
+  cursor: pointer;
+}
+.quake h2 {
+  font-size:1vmin;
+}
+.quake p {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.quake p.active {
+  //font-size:18px;
+  font-weight: 600;
+}
+.quake span.fa {
+  margin-left: 20px;
+}
+@media(min-height:750px){
+  .quake p {
+    font-size: 1.25em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .quake h2 {
+    font-size: 3vmin;
+    //IE9
+    font-size: 3vm;
+  }
+}

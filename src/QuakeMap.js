@@ -10,7 +10,7 @@ Leaflet.Icon.Default.mergeOptions({
   iconUrl: require('leaflet/dist/images/marker-icon.png'),
   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
-const position = [51.505, -0.09];
+const position = [51.505, -120.09];
 
 class QuakeMap extends Component {
   constructor(){
@@ -30,11 +30,17 @@ class QuakeMap extends Component {
       console.log('component did update');
       this.refs.geojsonLayer.leafletElement.addData(this.props.data);
       var pointCoord = this.props.data.features[0].geometry.coordinates;
-      this.refs.map.leafletElement.panTo([pointCoord[1], pointCoord[0]]);
+      this.refs.map.leafletElement.flyTo([pointCoord[1], pointCoord[0]]);
     }
     if (prevProps.liveQuakeId !== this.props.liveQuakeId) {
       pointCoord = this.props.data.features[this.props.liveQuakeId].geometry.coordinates;
-      this.refs.map.leafletElement.panTo([pointCoord[1], pointCoord[0]]);
+      this.refs.map.leafletElement.flyTo([pointCoord[1], pointCoord[0]]);
+    }
+    if (prevProps.mapZoom !== this.props.mapZoom) {
+      this.refs.map.leafletElement.setView(this.props.mapCenter, this.props.mapZoom);
+      this.refs.map.leafletElement.invalidateSize();
+      console.log(this.refs.map.leafletElement);
+      console.log(this.props.mapZoom + " " + this.props.mapCenter);
     }
   }
   onEachFeature(feature, layer) {
@@ -60,7 +66,7 @@ class QuakeMap extends Component {
   }
   render() {
     return (
-      <Map ref="map" center={position} zoom={3} >
+      <Map ref="map" className={this.props.quakeClass} attributionControl={false} userFlyTo={true} center={this.props.mapCenter} zoom={this.props.mapZoom} zoomControl={false} scrollWheelZoom={false} dragging={false} doubleClickZoom={false} boxZoom={false} worldCopyJump={true} >
         <TileLayer
           url='http://server.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}'
           attribution='Tiles &copy; Esri &mdash; Sources: GEBCO, NOAA, CHS, OSU, UNH, CSUMB, National Geographic, DeLorme, NAVTEQ, and Esri'

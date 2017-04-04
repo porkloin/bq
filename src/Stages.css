@@ -1,0 +1,111 @@
+/* INTRO SCREEN */
+
+.introScreen .intro, .introScreen .react-date-field {
+  display: block;
+}
+.introScreen .shade {
+  display: block;
+}
+.introScreen .ribbonArea {
+  display: none;
+}
+.introScreen .quakeList {
+  display: none;
+}
+
+/* SECONDARY "RESULTS" SCREEN */
+
+.quakeResults .shade {
+  display: none;
+}
+.quakeResults .mainMenu {
+  background: rgba(0,0,0,.5);
+}
+.quakeResults .es-logo.light {
+  display: none;
+}
+.quakeResults .es-logo.dark {
+  display: block;
+}
+.quakeResults .intro {
+  display: none;
+}
+.quakeResults .ribbonArea {
+  display: flex;
+}
+.quakeResults .quakeList {
+  display: block;
+}
+.quakeResults .upperDate {
+  display: none;
+}
+.quakeResults.nameIsInput .icons {
+  display: block;
+}
+.quakeResults.nameNotInput .icons {
+  display: block;
+}
+.quakeResults .mainMenu input.react-date-field__input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  background: rgb(132,143,150);
+  color: black;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+}
+.quakeResults.modalOpen .infoTable {
+  display: table;
+  z-index:500;
+  background: rgba(255,255,255,0.75);
+  padding: 20px;
+  padding-top: 0px;
+  width: 80%;
+}
+@media(min-width: 1400){
+  .quakeResults .infoTable {
+    width: 60%;
+  }
+}
+@media(min-width: 1800){
+  .quakeResults .infoTable {
+    width: 50%;
+  }
+}
+.quakeResults .infoTable .stripe {
+  background: rgba(50,50,50,0.25);
+}
+
+/* Print View */
+
+.printView .shade, .printView .intro, .printView .mainMenu {
+  display: none;
+}
+.printView .ribbonArea {
+  display: flex;
+}
+.printView .ribbonArea .icons {
+  display: none;
+}
+.printView .quakeMap {
+  position: relative;
+  width: 75%;
+  min-height: 35%;
+  height: auto;
+}
+.printView .topQuake {
+  display: block;
+}
+.printView {
+  width:918px;
+  height: 1188px;
+}
+.printView .ribbon textarea {
+  font-size: 70px;
+  min-height: 95px;
+}
+.printView .infoTable {
+  display: table;
+}

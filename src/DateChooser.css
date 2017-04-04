@@ -1,6 +1,8 @@
 .react-date-field {
   z-index: 500;
   min-width: 340px;
+  padding-left: 5%;
+  padding-right: 5%;
   border: none;
 }
 .react-date-field input {
@@ -22,4 +24,9 @@
 }
 .react-date-field--theme-default .react-date-field__clear-icon {
   display: none!important;
+}
+@media(min-width:350px;){
+  .react-date-field {
+    min-width:340px;
+  }
 }

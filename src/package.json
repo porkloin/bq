@@ -1,3 +1,5 @@
 {
-  "dependencies": {}
+  "dependencies": {
+    "fontawesome": "^4.7.2"
+  }
 }
